@@ -9,7 +9,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 // Take a look at the data
-console.log(data);
+// console.log(data);
 
 // Use d3 to append a table row for each sighting
 data.forEach(function(ufoSighting) {
@@ -26,10 +26,10 @@ data.forEach(function(ufoSighting) {
 // Notes for filter button: id: datetime
 
 // Assign data to a variable
-var sightings = data;
+var ufoSighting = data;
 
 // Use d.3 to select the button
-var button = d3.select("#button");
+var button = d3.select("#filter-btn");
 
 // Select the form
 var form = d3.select("#form");
@@ -48,12 +48,26 @@ function runEnter() {
     var inputDate = d3.select("#datetime");
 
     // Get the value from the input field
-    var dateValue = inputDate.property("value");
+    var dateValue = inputElement.property("value");
 
-    console.log(inputDate);
-    console.log(ufoSighting);
+    console.log(dateValue);
+    console.log(people);
 
-    var filteredSightings = ufoSighting.filter(sighting => sighting.datetime === dateValue);
+    var filteredData = ufoSighting.filter(sighting => sighting.datetime === inputDate);
 
-    console.log(filteredSightings);
+    console.log(filteredData);
+
+    filteredData.forEach(function(newTable) {
+        // Append the filtered data to the table one row at a time
+        var row = tbody.append("tr");
+
+        Object.entries(newTable).forEach(function([key, value]) {
+            console.log(key, value);
+            // Add cell data
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+    
+
 };
