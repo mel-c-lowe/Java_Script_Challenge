@@ -44,16 +44,19 @@ function runEnter() {
     // Prevent default reset
     d3.event.preventDefault();
 
+    // Clear the table
+    tbody.html("");
+
     // Select input field
     var inputDate = d3.select("#datetime");
 
     // Get the value from the input field
-    var dateValue = inputElement.property("value");
+    var dateValue = inputDate.property("value");
 
     console.log(dateValue);
-    console.log(people);
+    console.log(ufoSighting);
 
-    var filteredData = ufoSighting.filter(sighting => sighting.datetime === inputDate);
+    var filteredData = ufoSighting.filter(sighting => sighting.datetime === dateValue);
 
     console.log(filteredData);
 
