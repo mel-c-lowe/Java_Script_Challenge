@@ -59,6 +59,12 @@ function runEnter() {
     // Select state input field
     var inputState = d3.select("#state");
 
+    // Select country input field
+     var inputCountry = d3.select("#country");
+
+    // Select shape input field
+    var inputShape = d3.select("#shape");
+
     // Get the value from the date input field
     var dateValue = inputDate.property("value");
 
@@ -67,6 +73,12 @@ function runEnter() {
 
     // Get value from state input fiels
     var stateValue = inputState.property("value");
+
+    //Get the value from the country input field
+    var countryValue = inputCountry.property("value");
+
+    // Get value from shape input fiels
+    var shapeValue = inputShape.property("value");
 
     console.log(dateValue);
     console.log(cityValue);
@@ -84,6 +96,14 @@ function runEnter() {
 
     if (stateValue) {
         filteredData = filteredData.filter(sighting => sighting.state === stateValue)
+    }
+
+    if (countryValue) {
+        filteredData = filteredData.filter(sighting => sighting.country === countryValue)
+    };  
+
+    if (shapeValue) {
+        filteredData = filteredData.filter(sighting => sighting.shape === shapeValue)
     }
 
     // console.log(filteredData);
