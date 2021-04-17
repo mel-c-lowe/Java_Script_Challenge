@@ -39,7 +39,7 @@ button.on("click", runEnter);
 form.on("change", runEnter);
 
 // Prevent default reset
-d3.event.preventDefault();
+// d3.event.preventDefault();
 
 // Establish the function runEnter
 function runEnter() {
@@ -50,18 +50,43 @@ function runEnter() {
     // Clear the table
     tbody.html("");
 
-    // Select input field
+    // Select date input field
     var inputDate = d3.select("#datetime");
 
-    // Get the value from the input field
+    // Select city input field
+    var inputCity = d3.select("#city");
+
+    // Select state input field
+    var inputState = d3.select("#state");
+
+    // Get the value from the date input field
     var dateValue = inputDate.property("value");
 
+    //Get the value from the city input field
+    var cityValue = inputCity.property("value");
+
+    // Get value from state input fiels
+    var stateValue = inputState.property("value");
+
     console.log(dateValue);
-    console.log(ufoSighting);
+    console.log(cityValue);
+    // console.log(ufoSighting);
 
-    var filteredData = ufoSighting.filter(sighting => sighting.datetime === dateValue);
+    var filteredData 
 
-    console.log(filteredData);
+    if (dateValue) {
+        filteredData = ufoSighting.filter(sighting => sighting.datetime === dateValue);
+    };
+
+    if (cityValue) {
+        filteredData = filteredData.filter(sighting => sighting.city === cityValue)
+    };  
+
+    if (stateValue) {
+        filteredData = filteredData.filter(sighting => sighting.state === stateValue)
+    }
+
+    // console.log(filteredData);
 
     filteredData.forEach(function(newTable) {
         // Append the filtered data to the table one row at a time
@@ -74,6 +99,4 @@ function runEnter() {
             cell.text(value);
         });
     });
-    
-
 };
