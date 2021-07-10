@@ -6,14 +6,7 @@ Tools Used:
 * HTML
 * Javascript
 * CSS
-
-### Assignment Overview
-
-* Javascript
-* HTML
-* CSS
 * Bootstrap
-
 
 ### Assignment Overview
 
